@@ -25,6 +25,7 @@ const variations = {
     color: var(--color-brand-50);
     background-color: var(--color-brand-600);
 
+    /* The & here selects the button or element itself to allow us to add hover effects */
     &:hover {
       background-color: var(--color-brand-700);
     }
@@ -47,3 +48,19 @@ const variations = {
     }
   `,
 };
+
+const Button = styled.button`
+  border: none;
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
+
+  ${(props) => sizes[props.size]}
+  ${(props) => variations[props.variation]}
+`;
+
+Button.defaultProps = {
+  variation: "primary",
+  size: "medium",
+};
+
+export default Button;
